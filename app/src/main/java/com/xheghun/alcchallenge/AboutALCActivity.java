@@ -3,7 +3,9 @@ package com.xheghun.alcchallenge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.net.http.SslError;
 import android.os.Bundle;
+import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -22,7 +24,7 @@ public class AboutALCActivity extends AppCompatActivity {
         swipeRefreshLayout = findViewById(R.id.swipe_refresh);
 
 
-        about_alc.loadUrl(mURL);
+
         swipeRefreshLayout.setOnRefreshListener(() -> about_alc.reload());
 
         about_alc.getSettings().setJavaScriptEnabled(true);
@@ -30,6 +32,7 @@ public class AboutALCActivity extends AppCompatActivity {
         about_alc.canGoBack();
         about_alc.canGoBack();
         about_alc.setWebViewClient(new MyWebViewClient());
+        about_alc.loadUrl(mURL);
     }
 
     class MyWebViewClient extends WebViewClient {
@@ -38,6 +41,11 @@ public class AboutALCActivity extends AppCompatActivity {
             swipeRefreshLayout.setRefreshing(false);
             mURL = url;
             super.onPageFinished(view,url);
+        }
+
+        @Override
+        public void onReceivedSslError(WebView view, SslErrorHandler handler, SslError error) {
+            handler.proceed();
         }
     }
 }

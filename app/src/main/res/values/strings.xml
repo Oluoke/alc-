@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ALC challenge</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="my_app">My ALC App</string>
+    <string name="about_alc">About ALC</string>
+    <string name="my_profile">My Profile</string>
+    <string name="welcome_to_alc">Welcome to ALC 4.0</string>
+</resources>
